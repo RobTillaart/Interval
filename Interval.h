@@ -1,0 +1,58 @@
+#pragma once
+//
+//    FILE: Interval.h
+//  AUTHOR: Rob Tillaart
+//    DATE: 2020-07-21
+// VERSION: 0.0.1
+// PURPOSE: Arduino library for Interval datatype
+//     URL: https://github.com/RobTillaart/Interval
+//
+// HISTORY:
+// see Interval.cpp file
+
+#include "Arduino.h"
+
+#define INTERVAL_LIB_VERSION      "0.0.2"
+ 
+class Interval: public Printable
+{
+  public:
+  // CONSTRUCTOR
+  Interval(float lo, float hi);
+  Interval(float f);             // default zero interval [f, f]
+
+  // PRINTABLE
+  size_t printTo(Print& p) const;
+  void setDecimals(uint8_t n) { _decimals = n; };
+
+  // BASE FUNCTIONS
+  float value()       { return (_hi /2 + _lo /2); };   // assumption
+  float range()       { return _hi -_lo; };
+  float high()        { return _hi; };
+  float low()         { return _lo; };
+  float relAccuracy() { return abs(range() / value()); };
+
+  // MATH OPERATORS
+  Interval operator +  (const Interval&);
+  Interval operator -  (const Interval&);
+  Interval operator *  (const Interval&);
+  Interval operator /  (const Interval&);
+  Interval operator += (const Interval&);
+  Interval operator -= (const Interval&);
+  Interval operator *= (const Interval&);
+  Interval operator /= (const Interval&);
+
+  // COMPARISON OPERATORS
+  // TODO
+
+  // SET OPERATORS
+  // TODO
+
+  private:
+  float   _lo;
+  float   _hi;
+  uint8_t _decimals = 3;
+};
+
+
+// -- END OF FILE --
