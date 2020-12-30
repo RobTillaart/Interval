@@ -121,7 +121,7 @@ unittest(test_math)
   assertEqual(4, z.high());
   assertEqual(8, z.range());
   assertEqual(0, z.value());
-     assertEqual(-1, z.relAccuracy());  // NAN equivalent
+  assertEqual(-1, z.relAccuracy());  // NAN equivalent
 
 }
 
