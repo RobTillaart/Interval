@@ -7,7 +7,7 @@
 //     URL: https://github.com/RobTillaart/Interval
 //
 //  0.0.1   2020-07-20  initial version (not complete)
-//  0.1.0   2020-12-30  arduino-ci, unit tests
+//  0.1.0   2020-12-30  arduino-ci, unit tests, setRange()
 
 
 #include "Interval.h"
@@ -37,6 +37,20 @@ Interval::Interval()
   _lo = 0;
   _hi = 0;
 };
+
+float Interval::relAccuracy()
+{
+  if (value() == 0.0) return -1;
+  return abs(range() / value());  // TODO /2 ?
+}
+
+void Interval::setRange(float r)
+{
+  float v = value();
+  _lo = v - r / 2;
+  _hi = v + r / 2;
+}
+
 
 // PRINTABLE
 size_t Interval::printTo(Print& p) const

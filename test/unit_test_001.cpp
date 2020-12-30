@@ -71,7 +71,7 @@ unittest(test_constructor)
   assertEqual(5, x.high());
   assertEqual(4, x.range());
   assertEqual(3, x.value());
-  assertEqual(2, x.relAccuracy());
+  assertEqualFloat(1.333333, x.relAccuracy(), 0.0001);
 }
 
 
@@ -84,32 +84,39 @@ unittest(test_math)
   Interval z;
 
   z = x + y;
-  assertEqual(0, z.low());
-  assertEqual(0, z.high());
-  assertEqual(0, z.range());
-  assertEqual(0, z.value());
-  assertEqual(0, z.relAccuracy());
+  assertEqual(3, z.low());
+  assertEqual(8, z.high());
+  assertEqual(5, z.range());
+  assertEqual(5.5, z.value());
+  assertEqualFloat(0.909091, z.relAccuracy(), 0.0001);
 
   z = x - y;
-  assertEqual(0, z.low());
-  assertEqual(0, z.high());
-  assertEqual(0, z.range());
-  assertEqual(0, z.value());
-  assertEqual(0, z.relAccuracy());
+  assertEqual(-2, z.low());
+  assertEqual(3, z.high());
+  assertEqual(5, z.range());
+  assertEqual(0.5, z.value());
+  assertEqualFloat(10, z.relAccuracy(), 0.0001);
 
   z = x * y;
-  assertEqual(0, z.low());
-  assertEqual(0, z.high());
-  assertEqual(0, z.range());
-  assertEqual(0, z.value());
-  assertEqual(0, z.relAccuracy());
+  assertEqual(2, z.low());
+  assertEqual(15, z.high());
+  assertEqual(13, z.range());
+  assertEqual(8.5, z.value());
+  assertEqualFloat(1.52941, z.relAccuracy(),0.0001);
 
   z = x / y;
+  assertEqualFloat(1.33333, z.low(), 0.0001);
+  assertEqualFloat(2.5, z.high(), 0.0001);
+  assertEqualFloat(2.16667, z.range(), 0.0001);
+  assertEqualFloat(1.41667, z.value(), 0.0001);
+  assertEqualFloat(1.52941, z.relAccuracy(), 0.0001);
+
+  z = x - x;  // 0;
   assertEqual(0, z.low());
   assertEqual(0, z.high());
   assertEqual(0, z.range());
   assertEqual(0, z.value());
-  assertEqual(0, z.relAccuracy());
+  assertEqual(-1, z.relAccuracy());  // NAN equivalent
 
 }
 

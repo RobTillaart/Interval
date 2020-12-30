@@ -31,7 +31,8 @@ class Interval: public Printable
   float range()       { return _hi -_lo; };
   float high()        { return _hi; };
   float low()         { return _lo; };
-  float relAccuracy() { return abs(range() / value()); };
+  float relAccuracy();
+  void  setRange(float r);
 
   // MATH OPERATORS
   Interval operator +  (const Interval&);
