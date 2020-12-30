@@ -3,7 +3,7 @@
 //    FILE: Interval.h
 //  AUTHOR: Rob Tillaart
 //    DATE: 2020-07-21
-// VERSION: 0.0.1
+// VERSION: 0.1.0
 // PURPOSE: Arduino library for Interval datatype
 //     URL: https://github.com/RobTillaart/Interval
 //
@@ -12,12 +12,13 @@
 
 #include "Arduino.h"
 
-#define INTERVAL_LIB_VERSION      "0.0.2"
+#define INTERVAL_LIB_VERSION      "0.1.0"
  
 class Interval: public Printable
 {
   public:
   // CONSTRUCTOR
+  Interval();
   Interval(float lo, float hi);
   Interval(float f);             // default zero interval [f, f]
 
@@ -30,7 +31,8 @@ class Interval: public Printable
   float range()       { return _hi -_lo; };
   float high()        { return _hi; };
   float low()         { return _lo; };
-  float relAccuracy() { return abs(range() / value()); };
+  float relAccuracy();
+  void  setRange(float r);
 
   // MATH OPERATORS
   Interval operator +  (const Interval&);

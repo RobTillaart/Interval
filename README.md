@@ -1,6 +1,12 @@
+
+[![Arduino CI](https://github.com/RobTillaart/Interval/workflows/Arduino%20CI/badge.svg)](https://github.com/marketplace/actions/arduino_ci)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/RobTillaart/Interval/blob/master/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/RobTillaart/Interval.svg?maxAge=3600)](https://github.com/RobTillaart/Interval/releases)
+
+
 # Interval
 
-Arduino library for the Interval datatype.
+Arduino library for the Interval datatype. **Experimental**
 
 ## Description
 
@@ -10,10 +16,10 @@ After doing some math you want to know the interval of possible outcomes.
 
 An interval exist of a pair of floats, low and high, the borders of the interval. 
 
-*footnote:*
-*The datatype Interval was created to do some experiments.
+**footnote:**
+The datatype Interval was created to do some experiments.
 It was inspired by the frink language which has an interval datatype.
-Frink itself is not investigated, so semantics are not necesary similar.*
+Frink itself is not investigated, so semantics are not necessary similar.
 
 ## Interface
 
@@ -35,6 +41,8 @@ The basic functions are used to get and set some core attributes.
 - **range()**
 - **high()**
 - **low()**
+- **relAccuracy()** = range() / value()
+- **setRange(float r)** adjust range around value() =- r/2
 
 ### Math Operators
 
@@ -69,6 +77,8 @@ Interval s = sqr( [-5, -3] ) ;    ==> [9, 25]
 Interval t = sqr( [-5,  3] ) ;    ==> [0, 25]
 
 ```
+
+- change range while keeping value.
 
 
 ### Comparison operators
