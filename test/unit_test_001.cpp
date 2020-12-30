@@ -109,7 +109,7 @@ unittest(test_math)
 
   fprintf(stderr, "x / y\n");
   z = x / y;
-     assertEqualFloat(0, z.low(), 0.0001);
+  assertEqualFloat(0.333333, z.low(), 0.0001);
   assertEqualFloat(2.5, z.high(), 0.0001);
   assertEqualFloat(2.16667, z.range(), 0.0001);
   assertEqualFloat(1.41667, z.value(), 0.0001);
