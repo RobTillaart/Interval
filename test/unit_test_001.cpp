@@ -83,6 +83,7 @@ unittest(test_math)
   Interval y(2, 3);
   Interval z;
 
+  fprintf(stderr, "x + y\n");
   z = x + y;
   assertEqual(3, z.low());
   assertEqual(8, z.high());
@@ -90,6 +91,7 @@ unittest(test_math)
   assertEqual(5.5, z.value());
   assertEqualFloat(0.909091, z.relAccuracy(), 0.0001);
 
+  fprintf(stderr, "x - y\n");
   z = x - y;
   assertEqual(-2, z.low());
   assertEqual(3, z.high());
@@ -97,6 +99,7 @@ unittest(test_math)
   assertEqual(0.5, z.value());
   assertEqualFloat(10, z.relAccuracy(), 0.0001);
 
+  fprintf(stderr, "x * y\n");
   z = x * y;
   assertEqual(2, z.low());
   assertEqual(15, z.high());
@@ -104,19 +107,21 @@ unittest(test_math)
   assertEqual(8.5, z.value());
   assertEqualFloat(1.52941, z.relAccuracy(),0.0001);
 
+  fprintf(stderr, "x / y\n");
   z = x / y;
-  assertEqualFloat(1.33333, z.low(), 0.0001);
+     assertEqualFloat(0, z.low(), 0.0001);
   assertEqualFloat(2.5, z.high(), 0.0001);
   assertEqualFloat(2.16667, z.range(), 0.0001);
   assertEqualFloat(1.41667, z.value(), 0.0001);
   assertEqualFloat(1.52941, z.relAccuracy(), 0.0001);
 
+  fprintf(stderr, "x - x\n");
   z = x - x;  // 0;
-  assertEqual(0, z.low());
-  assertEqual(0, z.high());
-  assertEqual(0, z.range());
+  assertEqual(-4, z.low());
+  assertEqual(4, z.high());
+  assertEqual(8, z.range());
   assertEqual(0, z.value());
-  assertEqual(-1, z.relAccuracy());  // NAN equivalent
+     assertEqual(-1, z.relAccuracy());  // NAN equivalent
 
 }
 
