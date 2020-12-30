@@ -41,6 +41,8 @@ The basic functions are used to get and set some core attributes.
 - **range()**
 - **high()**
 - **low()**
+- **relAccuracy()** = range() / value()
+- **setRange(float r)** adjust range around value() =- r/2
 
 ### Math Operators
 
