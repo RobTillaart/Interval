@@ -32,6 +32,12 @@ Interval::Interval(float v)
   _hi = v;
 };
 
+Interval::Interval()
+{
+  _lo = 0;
+  _hi = 0;
+};
+
 // PRINTABLE
 size_t Interval::printTo(Print& p) const
 {

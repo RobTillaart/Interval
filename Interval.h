@@ -18,6 +18,7 @@ class Interval: public Printable
 {
   public:
   // CONSTRUCTOR
+  Interval();
   Interval(float lo, float hi);
   Interval(float f);             // default zero interval [f, f]
 
