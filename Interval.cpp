@@ -2,12 +2,12 @@
 //    FILE: Interval.cpp
 //  AUTHOR: Rob Tillaart
 //    DATE: 2020-07-21
-// VERSION: 0.0.1
+// VERSION: 0.1.0
 // PURPOSE: Arduino library for Interval datatype
 //     URL: https://github.com/RobTillaart/Interval
 //
-// 0.0.1    2020-07-20 initial version (not complete)
-// 
+//  0.0.1   2020-07-20  initial version (not complete)
+//  0.1.0   2020-12-30  arduino-ci, unit tests
 
 
 #include "Interval.h"
