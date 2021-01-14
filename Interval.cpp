@@ -134,25 +134,25 @@ bool Interval::operator != (const Interval &in)
 }
 
 // VALUE FOR NOW...
-bool Interval::operator >  (const Interval &in)
-{
-  return this->value() > in->value();
-}
-
-bool Interval::operator >= (const Interval &in)
-{
-  return this->value() >= in->value();
-}
-
-bool Interval::operator <  (const Interval &in)
-{
-  return this->value() < in->value();
-}
-
-bool Interval::operator <= (const Interval &in)
-{
-  return this->value() <= in->value();
-}
+// bool Interval::operator >  (const Interval &in)
+// {
+//   return this->value() > in.value();
+// }
+// 
+// bool Interval::operator >= (const Interval &in)
+// {
+//   return this->value() >= in.value();
+// }
+// 
+// bool Interval::operator <  (const Interval &in)
+// {
+//   return this->value() < in.value();
+// }
+// 
+// bool Interval::operator <= (const Interval &in)
+// {
+//   return this->value() <= in.value();
+// }
 
 
 

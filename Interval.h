@@ -47,10 +47,10 @@ class Interval: public Printable
   // COMPARISON OPERATORS - compares value()
   bool operator == (const Interval&);
   bool operator != (const Interval&);
-  bool operator >  (const Interval&);
-  bool operator >= (const Interval&);
-  bool operator <  (const Interval&);
-  bool operator <= (const Interval&);
+  // bool operator >  (const Interval&);
+  // bool operator >= (const Interval&);
+  // bool operator <  (const Interval&);
+  // bool operator <= (const Interval&);
 
 
   // SET OPERATORS

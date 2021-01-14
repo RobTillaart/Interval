@@ -168,21 +168,21 @@ unittest(test_comparisons)
   assertFalse(x != a);
   assertTrue(x != y);
 
-  assertFalse(x < x);
-  assertFalse(x < a);
-  assertFalse(x < y);
-
-  assertTrue(x <= x);
-  assertTrue(x <= a);
-  assertFalse(x <= y);
-
-  assertFalse(x > x);
-  assertFalse(x > a);
-  assertFalse(x > y);
-
-  assertTrue(x >= x);
-  assertTrue(x >= a);
-  assertFalse(x >= y);
+  // assertFalse(x < x);
+  // assertFalse(x < a);
+  // assertFalse(x < y);
+  // 
+  // assertTrue(x <= x);
+  // assertTrue(x <= a);
+  // assertFalse(x <= y);
+  // 
+  // assertFalse(x > x);
+  // assertFalse(x > a);
+  // assertFalse(x > y);
+  // 
+  // assertTrue(x >= x);
+  // assertTrue(x >= a);
+  // assertFalse(x >= y);
 
 }
 
