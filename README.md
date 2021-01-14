@@ -8,6 +8,7 @@
 
 Arduino library for the Interval datatype. **Experimental**
 
+
 ## Description
 
 This experimental library provides basic math when you do not know a quantity.
@@ -21,6 +22,8 @@ The datatype Interval was created to do some experiments.
 It was inspired by the frink language which has an interval datatype.
 Frink itself is not investigated, so semantics are not necessary similar.
 
+
+
 ## Interface
 
 The Interval class implements the public interface of Printable.
@@ -32,17 +35,26 @@ This allows you to print an Interval in human readable form.
     Serial.println(x); // will print [3.00, 4.00]
 ```
 
+
+### Constructors
+
+- **Interval()** zero = interval \[0, 0]
+- **Interval(float lo, float hi)** interval \[lo, hi]
+- **Interval(float f)** interval \[f, f]
+
+
 ### Basic functions
 
 The basic functions are used to get and set some core attributes.
 
-- **setDecimals()**
-- **value()**
-- **range()**
-- **high()**
-- **low()**
+- **setDecimals()** set nr of decimals for printing.
+- **value()** is the middle of the interval (as we do not know distribution)
+- **range()** = high() - low()
+- **high()** idem
+- **low()** idem
 - **relAccuracy()** = range() / value()
 - **setRange(float r)** adjust range around value() =- r/2
+
 
 ### Math Operators
 
@@ -88,14 +100,22 @@ an interval is Certainly Less Equal or Probably Less or Equal.
 The Certainly group will be boolean math as we know it.
 The Probably group will be more like fuzzy logic so a float between 0..100%.
 
+- **bool == ** 
+- **bool != ** 
+- **bool >  ** 
+- **bool >= ** 
+- **bool <  ** 
+- **bool <= ** 
+
 ### Set operators
 
 **To be investigated** include:
 - If you have two or more intervals, what is the 'super interval' that includes all?
 - How to subtract elements of an interval from another Interval?  
 This is different than the subtraction above,  
-think of it as " I know the number I look for is in [1, 4] but it is not in [3, 5]  
-so it is in [1,3]
+think of it as " I know the number I look for is in \[1, 4] but it is not in \[3, 5]  
+so it is in \[1,3]
+
 
 ### Other
 

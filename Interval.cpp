@@ -26,10 +26,10 @@ Interval::Interval(float lo, float hi)
   }
 };
 
-Interval::Interval(float v)
+Interval::Interval(float f)
 {
-  _lo = v;
-  _hi = v;
+  _lo = f;
+  _hi = f;
 };
 
 Interval::Interval()
@@ -46,9 +46,9 @@ float Interval::relAccuracy()
 
 void Interval::setRange(float r)
 {
-  float v = value();
-  _lo = v - r / 2;
-  _hi = v + r / 2;
+  float f = value();
+  _lo = f - r / 2;
+  _hi = f + r / 2;
 }
 
 
@@ -65,7 +65,10 @@ size_t Interval::printTo(Print& p) const
 };
 
 
-// MATH OPERATIONS
+/////////////////////////////////////////////////
+//
+// MATH BASIC OPERATIONS
+//
 Interval Interval::operator + (const Interval &in)
 {
   return Interval(_lo + in._lo, _hi + in._hi);
@@ -113,6 +116,46 @@ Interval Interval::operator /= (const Interval &in)
   _hi /= in._lo;
   return *this;
 }
+
+
+/////////////////////////////////////////////////
+//
+// COMPARISON OPERATIONS
+//
+
+bool Interval::operator == (const Interval &in)
+{
+  return ((_lo == in._lo) && (_hi == in._hi));
+}
+
+bool Interval::operator != (const Interval &in)
+{
+  return ((_lo != in._lo) || (_hi != in._hi));
+}
+
+// VALUE FOR NOW...
+// bool Interval::operator >  (const Interval &in)
+// {
+//   return this->value() > in.value();
+// }
+// 
+// bool Interval::operator >= (const Interval &in)
+// {
+//   return this->value() >= in.value();
+// }
+// 
+// bool Interval::operator <  (const Interval &in)
+// {
+//   return this->value() < in.value();
+// }
+// 
+// bool Interval::operator <= (const Interval &in)
+// {
+//   return this->value() <= in.value();
+// }
+
+
+
 
 
 

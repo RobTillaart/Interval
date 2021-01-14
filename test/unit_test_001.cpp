@@ -31,10 +31,6 @@
 
 #include <ArduinoUnitTests.h>
 
-#define assertEqualFloat(arg1, arg2, arg3)  assertOp("assertEqualFloat", "expected", fabs(arg1 - arg2), compareLessOrEqual, "<=", "actual", arg3)
-// #define assertEqualINF(arg)  assertOp("assertEqualINF", "expected", INFINITY, compareEqual, "==", "actual", arg)
-// #define assertEqualNAN(arg)  assertOp("assertEqualNAN", "expected", true, compareEqual, "==", "actual", isnan(arg))
-
 
 #include "Arduino.h"
 #include "Interval.h"
@@ -49,18 +45,6 @@ unittest_teardown()
 {
 }
 
-/*
-unittest(test_new_operator)
-{
-  assertEqualINF(exp(800));
-  assertEqualINF(0.0/0.0);
-  assertEqualINF(42);
-  
-  assertEqualNAN(INFINITY - INFINITY);
-  assertEqualNAN(0.0/0.0);
-  assertEqualNAN(42);
-}
-*/
 
 unittest(test_constructor)
 {
@@ -75,7 +59,7 @@ unittest(test_constructor)
 }
 
 
-unittest(test_math)
+unittest(test_math_basic_1)
 {
   fprintf(stderr, "VERSION: %s\n", INTERVAL_LIB_VERSION );
 
@@ -122,8 +106,87 @@ unittest(test_math)
   assertEqual(8, z.range());
   assertEqual(0, z.value());
   assertEqual(-1, z.relAccuracy());  // NAN equivalent
+}
+
+
+unittest(test_math_basic_2)
+{
+  fprintf(stderr, "VERSION: %s\n", INTERVAL_LIB_VERSION );
+
+  Interval x(1, 5);
+  Interval y(2, 3);
+
+  fprintf(stderr, "x += y\n");
+  x += y;
+  assertEqual(3, x.low());
+  assertEqual(8, x.high());
+  assertEqual(5, x.range());
+  assertEqual(5.5, x.value());
+  assertEqualFloat(0.909091, x.relAccuracy(), 0.0001);
+
+  fprintf(stderr, "x -= y\n");
+  x -= y;
+  assertEqual(0, x.low());
+  assertEqual(6, x.high());
+  assertEqual(6, x.range());
+  assertEqual(3, x.value());
+  assertEqualFloat(2, x.relAccuracy(), 0.0001);
+
+  fprintf(stderr, "x *= y\n");
+  x *= y;
+  assertEqual(0, x.low());
+  assertEqual(18, x.high());
+  assertEqual(18, x.range());
+  assertEqual(9, x.value());
+  assertEqualFloat(2, x.relAccuracy(),0.0001);
+
+  fprintf(stderr, "x /= y\n");
+  x /= y;
+  assertEqualFloat(0, x.low(), 0.0001);
+  assertEqualFloat(9, x.high(), 0.0001);
+  assertEqualFloat(9, x.range(), 0.0001);
+  assertEqualFloat(4.5, x.value(), 0.0001);
+  assertEqualFloat(2, x.relAccuracy(), 0.0001);
+}
+
+
+
+unittest(test_comparisons)
+{
+  fprintf(stderr, "VERSION: %s\n", INTERVAL_LIB_VERSION );
+
+  Interval x(1, 5);
+  Interval y(2, 3);
+  Interval a(1, 5);
+  Interval b(2, 3);
+
+  assertTrue(x == x);
+  assertTrue(x == a);
+  assertFalse(x == y);
+
+  assertFalse(x != x);
+  assertFalse(x != a);
+  assertTrue(x != y);
+
+  // assertFalse(x < x);
+  // assertFalse(x < a);
+  // assertFalse(x < y);
+  // 
+  // assertTrue(x <= x);
+  // assertTrue(x <= a);
+  // assertFalse(x <= y);
+  // 
+  // assertFalse(x > x);
+  // assertFalse(x > a);
+  // assertFalse(x > y);
+  // 
+  // assertTrue(x >= x);
+  // assertTrue(x >= a);
+  // assertFalse(x >= y);
 
 }
+
+
 
 unittest_main()
 
