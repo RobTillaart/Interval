@@ -65,7 +65,10 @@ size_t Interval::printTo(Print& p) const
 };
 
 
-// MATH OPERATIONS
+/////////////////////////////////////////////////
+//
+// MATH BASIC OPERATIONS
+//
 Interval Interval::operator + (const Interval &in)
 {
   return Interval(_lo + in._lo, _hi + in._hi);
@@ -113,6 +116,46 @@ Interval Interval::operator /= (const Interval &in)
   _hi /= in._lo;
   return *this;
 }
+
+
+/////////////////////////////////////////////////
+//
+// COMPARISON OPERATIONS
+//
+
+bool Interval::operator == (const Interval &in)
+{
+  return ((_lo == in._lo) && (_hi == in._hi));
+}
+
+bool Interval::operator != (const Interval &in)
+{
+  return ((_lo != in._lo) || (_hi != in._hi));
+}
+
+// VALUE FOR NOW...
+bool Interval::operator >  (const Interval &in)
+{
+  return value() > in.value();
+}
+
+bool Interval::operator >= (const Interval &in)
+{
+  return value() >= in.value();
+}
+
+bool Interval::operator <  (const Interval &in)
+{
+  return value() < in.value();
+}
+
+bool Interval::operator <= (const Interval &in)
+{
+  return value() <= in.value();
+}
+
+
+
 
 
 

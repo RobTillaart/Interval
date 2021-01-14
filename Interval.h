@@ -44,11 +44,22 @@ class Interval: public Printable
   Interval operator *= (const Interval&);
   Interval operator /= (const Interval&);
 
-  // COMPARISON OPERATORS
-  // TODO
+  // COMPARISON OPERATORS - compares value()
+  bool operator == (const Interval&);
+  bool operator != (const Interval&);
+  bool operator >  (const Interval&);
+  bool operator >= (const Interval&);
+  bool operator <  (const Interval&);
+  bool operator <= (const Interval&);
+
 
   // SET OPERATORS
-  // TODO
+  // Interval operator  &  (const Interval&);  // common part  [1, 5] & [4, 8] => [4, 5]
+  // Interval operator  |  (const Interval&);  // superset [1, 5] | [4, 8] => [1, 8]
+  // Interval operator  ^  (const Interval&);  // 
+  //   smaller 
+
+
 
   private:
   float   _lo;

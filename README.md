@@ -100,6 +100,12 @@ an interval is Certainly Less Equal or Probably Less or Equal.
 The Certainly group will be boolean math as we know it.
 The Probably group will be more like fuzzy logic so a float between 0..100%.
 
+- **bool == ** 
+- **bool != ** 
+- **bool >  ** 
+- **bool >= ** 
+- **bool <  ** 
+- **bool <= ** 
 
 ### Set operators
 

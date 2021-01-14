@@ -129,25 +129,64 @@ unittest(test_math_basic_2)
   assertEqual(0, x.low());
   assertEqual(6, x.high());
   assertEqual(6, x.range());
-  assertEqual(0, x.value());
-  assertEqualFloat(0, x.relAccuracy(), 0.0001);
+  assertEqual(3, x.value());
+  assertEqualFloat(2, x.relAccuracy(), 0.0001);
 
   fprintf(stderr, "x *= y\n");
   x *= y;
   assertEqual(0, x.low());
-  assertEqual(0, x.high());
-  assertEqual(0, x.range());
-  assertEqual(0, x.value());
-  assertEqualFloat(0, x.relAccuracy(),0.0001);
+  assertEqual(18, x.high());
+  assertEqual(18, x.range());
+  assertEqual(9, x.value());
+  assertEqualFloat(2, x.relAccuracy(),0.0001);
 
   fprintf(stderr, "x /= y\n");
   x /= y;
   assertEqualFloat(0, x.low(), 0.0001);
-  assertEqualFloat(0, x.high(), 0.0001);
-  assertEqualFloat(0, x.range(), 0.0001);
-  assertEqualFloat(0, x.value(), 0.0001);
-  assertEqualFloat(0, x.relAccuracy(), 0.0001);
+  assertEqualFloat(9, x.high(), 0.0001);
+  assertEqualFloat(9, x.range(), 0.0001);
+  assertEqualFloat(4.5, x.value(), 0.0001);
+  assertEqualFloat(2, x.relAccuracy(), 0.0001);
 }
+
+
+
+unittest(test_comparisons)
+{
+  fprintf(stderr, "VERSION: %s\n", INTERVAL_LIB_VERSION );
+
+  Interval x(1, 5);
+  Interval y(2, 3);
+  Interval a(1, 5);
+  Interval b(2, 3);
+
+  assertTrue(x == x);
+  assertTrue(x == a);
+  assertFalse(x == y);
+
+  assertFalse(x != x);
+  assertFalse(x != a);
+  assertTrue(x != y);
+
+  assertFalse(x < x);
+  assertFalse(x < a);
+  assertFalse(x < y);
+
+  assertTrue(x <= x);
+  assertTrue(x <= a);
+  assertFalse(x <= y);
+
+  assertFalse(x > x);
+  assertFalse(x > a);
+  assertFalse(x > y);
+
+  assertTrue(x >= x);
+  assertTrue(x >= a);
+  assertFalse(x >= y);
+
+}
+
+
 
 unittest_main()
 
