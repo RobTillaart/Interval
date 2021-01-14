@@ -26,10 +26,10 @@ Interval::Interval(float lo, float hi)
   }
 };
 
-Interval::Interval(float v)
+Interval::Interval(float f)
 {
-  _lo = v;
-  _hi = v;
+  _lo = f;
+  _hi = f;
 };
 
 Interval::Interval()
@@ -46,9 +46,9 @@ float Interval::relAccuracy()
 
 void Interval::setRange(float r)
 {
-  float v = value();
-  _lo = v - r / 2;
-  _hi = v + r / 2;
+  float f = value();
+  _lo = f - r / 2;
+  _hi = f + r / 2;
 }
 
 
